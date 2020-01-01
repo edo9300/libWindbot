@@ -81,7 +81,6 @@
         ImperialCustom = 9995766,
         InspectorBoarder = 15397015,
         Mashoudou = 76375976,
-        EternalSoul = 48680970,
-        MarincessBattleOcean = 91027843
+        EternalSoul = 48680970
     }
 }

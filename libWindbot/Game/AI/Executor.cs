@@ -21,7 +21,7 @@ namespace WindBot.Game.AI
 
         protected ExecutorType Type { get; private set; }
         protected ClientCard Card { get; private set; }
-        protected int ActivateDescription { get; private set; }
+        protected long ActivateDescription { get; private set; }
 
         protected ClientField Bot { get; private set; }
         protected ClientField Enemy { get; private set; }
@@ -160,12 +160,12 @@ namespace WindBot.Game.AI
             return null;
         }
 
-        public virtual bool OnSelectYesNo(int desc)
+        public virtual bool OnSelectYesNo(long desc)
         {
             return true;
         }
 
-        public virtual int OnSelectOption(IList<int> options)
+        public virtual int OnSelectOption(IList<long> options)
         {
             return -1;
         }
@@ -201,7 +201,7 @@ namespace WindBot.Game.AI
         /// <summary>
         /// Set global variables Type, Card, ActivateDescription for Executor
         /// </summary>
-        public void SetCard(ExecutorType type, ClientCard card, int description)
+        public void SetCard(ExecutorType type, ClientCard card, long description)
         {
             Type = type;
             Card = card;

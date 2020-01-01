@@ -59,9 +59,7 @@ namespace WindBot.Game.AI
             _game = game;
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(DialogsData));
             string dialogfilename = game.Dialog;
-            
-            //using (Stream fs = WindBot.Program.Assets.Open("Dialogs/" + dialogfilename + ".json"))
-            using (Stream fs = File.OpenRead(Path.Combine(WindBot.AssetPath, "windbot/Dialogs/", dialogfilename + ".json")))
+            using (FileStream fs = File.OpenRead("Dialogs/" + dialogfilename + ".json"))
             {
                 DialogsData data = (DialogsData)serializer.ReadObject(fs);
                 _welcome = data.welcome;
@@ -129,7 +127,7 @@ namespace WindBot.Game.AI
 
         public void SendOnDirectAttack(string attacker)
         {
-            if (attacker == "" || attacker == null)
+            if (string.IsNullOrEmpty(attacker))
             {
                 attacker = _facedownmonstername;
             }
