@@ -14,12 +14,11 @@ namespace WindBot
     {
         public static string AssetPath;
 
-        public static void InitAndroid(string assetPath, string databasePath, string confPath)
+        public static void InitAndroid(string assetPath)
         {
             Program.Rand = new Random();
             AssetPath = assetPath;
             DecksManager.Init();
-            NamedCardsManager.Init(databasePath);
         }
 
         private static IList<string> ParseArgs(string arg)
