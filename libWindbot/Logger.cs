@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Android.Util;
+using System;
 
 namespace WindBot
 {
@@ -6,7 +7,7 @@ namespace WindBot
     {
         public static void WriteLine(string message)
         {
-            Console.WriteLine("[" + DateTime.Now.ToString("yy-MM-dd HH:mm:ss") + "] " + message);
+            Log.Info("Edoprowindbot", "[" + DateTime.Now.ToString("yy-MM-dd HH:mm:ss") + "] " + message);
         }
         public static void DebugWriteLine(string message)
         {
@@ -16,10 +17,7 @@ namespace WindBot
         }
         public static void WriteErrorLine(string message)
         {
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Error.WriteLine("[" + DateTime.Now.ToString("yy-MM-dd HH:mm:ss") + "] " + message);
-            Console.ResetColor();
+            Log.Error("Edoprowindbot", "[" + DateTime.Now.ToString("yy-MM-dd HH:mm:ss") + "] " + message);
         }
     }
 }

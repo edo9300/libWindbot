@@ -33,6 +33,7 @@ namespace WindBot
             foreach (string param in args)
             {
                 string[] p = param.Split(new char['=']);
+                string[] p = Regex.Split(param, "[=]");
                 p[1] = p[1].Replace("'", "");
                 if (p[0] == "Name") Info.Name = p[1];
                 if (p[0] == "Deck") Info.Deck = p[1];
