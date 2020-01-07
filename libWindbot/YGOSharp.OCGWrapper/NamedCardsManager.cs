@@ -12,20 +12,20 @@ namespace YGOSharp.OCGWrapper
 
         public static void Init(string databaseFullPath)
         {
-            
+            //_cards = new Dictionary<int, NamedCard>();
         }
 
         internal static NamedCard GetCard(int id)
         {
-            if (_cards.ContainsKey(id))
-                return _cards[id];
+            /*if (_cards.ContainsKey(id))
+                return _cards[id];*/
             return null;
         }
 
         private static void LoadCard(IDataRecord reader)
         {
-            NamedCard card = new NamedCard(reader);
-            _cards.Add(card.Id, card);
+           /* NamedCard card = new NamedCard(reader);
+            _cards.Add(card.Id, card);*/
         }
     }
 }
