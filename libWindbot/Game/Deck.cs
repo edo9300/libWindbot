@@ -33,7 +33,7 @@ namespace WindBot.Game
             StreamReader reader = null;
             try
             {
-                reader = new StreamReader(new FileStream(Path.Combine(WindBot.AssetPath, "Decks/", name + ".ydk"), FileMode.Open, FileAccess.Read));
+                reader = new StreamReader(new FileStream("Decks/" + name + ".ydk", FileMode.Open, FileAccess.Read));
 
                 Deck deck = new Deck();
                 bool main = true;
