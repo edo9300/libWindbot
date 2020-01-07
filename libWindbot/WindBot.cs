@@ -41,6 +41,9 @@ namespace WindBot
                 if (p[0] == "Hand") Info.Hand = int.Parse(p[1]);
                 if (p[0] == "Host") Info.Host = p[1];
                 if (p[0] == "HostInfo") Info.HostInfo = p[1];
+                if (p[0] == "Version") Info.Version = int.Parse(p[1]);
+                if (p[0] == "Chat") Info.Chat = int.Parse(p[1]) != 0;
+                if (p[0] == "Debug") Info.Debug = int.Parse(p[1]) != 0;
             }
             Thread workThread = new Thread(new ParameterizedThreadStart(Run));
             workThread.Start(Info);
