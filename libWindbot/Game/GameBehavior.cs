@@ -743,8 +743,8 @@ namespace WindBot.Game
             {
                 int id = packet.ReadInt32();
                 int controler = GetLocalPlayer(packet.ReadByte());
-                CardLocation loc = (CardLocation)packet.ReadByte();
-                int seq = packet.ReadByte();
+                CardLocation loc = (CardLocation)packet.ReadInt32();
+                int seq = packet.ReadInt32();
                 ClientCard card;
                 if (((int)loc & (int)CardLocation.Overlay) != 0)
                     card = new ClientCard(id, CardLocation.Overlay, -1);
@@ -835,6 +835,10 @@ namespace WindBot.Game
                         long pos = packet.BaseStream.Position;
                         long len = card.Update(packet, _duel);
                         packet.BaseStream.Position = pos + len;
+                    }
+                    else
+                    {
+                        packet.BaseStream.Position += 2;
                     }
                 }
             }
@@ -1395,7 +1399,7 @@ namespace WindBot.Game
 
             IList<ClientCard> selected = _ai.OnSelectSum(cards, sumval, min, max, _select_hint, mode);
             _select_hint = 0;
-            byte[] result = new byte[mandatoryCards.Count + selected.Count + 1];
+            byte[] result = new byte[mandatoryCards.Count + selected.Count + 16];
             result[0] = 0;
             result[1] = 1;
             result[2] = 0;
@@ -1439,6 +1443,8 @@ namespace WindBot.Game
             int reply;
             if (desc == 30)
                 reply = _ai.OnSelectBattleReplay() ? 1 : 0;
+            else if (desc == 1989)
+                reply = 1;
             else
                 reply = _ai.OnSelectYesNo(desc) ? 1 : 0;
             Connection.Send(CtosMessage.Response, reply);
